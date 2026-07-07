@@ -1,0 +1,39 @@
+---
+import { courses } from "@/content/courses";
+---
+
+<section class="container-wide py-12">
+  <div class="space-y-4">
+    {
+      courses.map((course) => (
+        <details id={course.id} class="card-glass group p-6">
+          <summary class="cursor-pointer list-none">
+            <div class="flex items-center justify-between gap-4">
+              <h2 class="display-title text-2xl font-semibold text-white">{course.title}</h2>
+              <span class="text-sm text-cyan-300 group-open:hidden">Expand</span>
+              <span class="hidden text-sm text-cyan-200 group-open:inline">Collapse</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-300">{course.shortDescription}</p>
+          </summary>
+          <div class="mt-5 grid gap-6 border-t border-white/10 pt-5 md:grid-cols-3">
+            <img src={course.image} alt={course.alt} class="h-44 w-full rounded-xl object-cover" loading="lazy" />
+            <div class="md:col-span-2">
+              <p class="text-sm text-slate-300"><strong>Duration:</strong> {course.duration}</p>
+              <p class="mt-1 text-sm text-slate-300"><strong>Audience:</strong> {course.audience}</p>
+              <h3 class="mt-4 text-sm font-semibold uppercase tracking-wider text-cyan-300">Outcomes</h3>
+              <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-200">
+                {course.outcomes.map((outcome) => <li>{outcome}</li>)}
+              </ul>
+              <h3 class="mt-4 text-sm font-semibold uppercase tracking-wider text-cyan-300">What we cover</h3>
+              <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-200">
+                {course.topics.map((topic) => <li>{topic}</li>)}
+              </ul>
+              <p class="mt-4 text-sm text-slate-300"><strong>Accreditation:</strong> {course.accreditation}</p>
+              <a href={`/#contact?course=${course.slug}`} class="btn-pulse mt-5">Enquire about this course</a>
+            </div>
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>

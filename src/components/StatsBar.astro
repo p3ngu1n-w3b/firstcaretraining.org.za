@@ -1,0 +1,16 @@
+---
+import { stats } from "@/content/courses";
+---
+
+<section class="border-b border-white/10 bg-[#0A1420] py-8">
+  <div class="container-wide grid gap-5 md:grid-cols-4">
+    {
+      stats.map((item) => (
+        <div class="card-glass p-5">
+          <p class="display-title text-3xl font-bold text-cyan-300">{item.value}</p>
+          <p class="mt-1 text-sm text-slate-300">{item.label}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

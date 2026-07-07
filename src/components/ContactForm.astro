@@ -1,0 +1,99 @@
+---
+import { EMAILJS } from "@/config/emailjs";
+import { courseOptions, contactDetails } from "@/content/courses";
+---
+
+<section id="contact" class="container-wide py-14">
+  <div class="grid gap-8 md:grid-cols-2">
+    <div>
+      <p class="eyebrow">Get In Touch</p>
+      <h2 class="display-title mt-4 text-4xl font-semibold text-white">Book Training or Ask for a Quote</h2>
+      <p class="mt-4 text-slate-300">
+        Send your details and we will contact you shortly to discuss dates, group size, and the most suitable course format for your team.
+      </p>
+      <div class="mt-6 text-sm text-slate-300">
+        <p>{contactDetails.phonePrimary} | {contactDetails.phoneSecondary}</p>
+        <p class="mt-1">{contactDetails.email}</p>
+        <p class="mt-1">{contactDetails.location}</p>
+      </div>
+    </div>
+    <form id="contact-form" class="card-glass space-y-4 p-6">
+      <input type="text" name="name" required placeholder="Your name" class="w-full rounded-xl border border-white/15 bg-[#0F1D2E] px-4 py-3 text-sm text-white outline-none focus:border-cyan-300" />
+      <input type="email" name="email" required placeholder="Email address" class="w-full rounded-xl border border-white/15 bg-[#0F1D2E] px-4 py-3 text-sm text-white outline-none focus:border-cyan-300" />
+      <input type="tel" name="phone" required placeholder="Phone number" class="w-full rounded-xl border border-white/15 bg-[#0F1D2E] px-4 py-3 text-sm text-white outline-none focus:border-cyan-300" />
+      <select id="service" name="service" required class="w-full rounded-xl border border-white/15 bg-[#0F1D2E] px-4 py-3 text-sm text-white outline-none focus:border-cyan-300">
+        {courseOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+      </select>
+      <textarea name="message" rows="5" placeholder="Tell us about your team size, location, and preferred dates." class="w-full rounded-xl border border-white/15 bg-[#0F1D2E] px-4 py-3 text-sm text-white outline-none focus:border-cyan-300"></textarea>
+      <button id="submit-btn" type="submit" class="btn-pulse w-full">Send enquiry</button>
+      <p id="form-status" class="text-sm text-slate-300" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script
+  type="module"
+  data-service-id={EMAILJS.serviceId}
+  data-template-id={EMAILJS.templateId}
+  data-public-key={EMAILJS.publicKey}
+>
+  import emailjs from "@emailjs/browser";
+
+  const scriptTag = document.currentScript;
+  const form = document.querySelector("#contact-form");
+  const status = document.querySelector("#form-status");
+  const submitButton = document.querySelector("#submit-btn");
+  const serviceSelect = document.querySelector("#service");
+
+  if (serviceSelect) {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = params.get("course");
+    const map = {
+      "first-aid": "Accredited First Aid",
+      "fire-marshal": "Fire Marshal & Extinguisher Training",
+      wildfire: "Basic Wildfire Training",
+      "snake-awareness": "Snake Awareness Workshop",
+      workshops: "First Aid Workshop",
+    };
+    if (fromQuery && map[fromQuery]) {
+      serviceSelect.value = map[fromQuery];
+    }
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const serviceId = scriptTag?.dataset.serviceId || "";
+    const templateId = scriptTag?.dataset.templateId || "";
+    const publicKey = scriptTag?.dataset.publicKey || "";
+
+    if (!serviceId || !templateId || !publicKey) {
+      status.textContent = "Email service is not configured yet. Please contact us by phone.";
+      return;
+    }
+
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      service: formData.get("service"),
+      message: formData.get("message"),
+    };
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    status.textContent = "";
+
+    try {
+      await emailjs.send(serviceId, templateId, payload, publicKey);
+      status.textContent = "Thank you! We will contact you shortly.";
+      form.reset();
+    } catch {
+      status.textContent = "There was an error sending your message. Please try again later.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Send enquiry";
+    }
+  });
+</script>

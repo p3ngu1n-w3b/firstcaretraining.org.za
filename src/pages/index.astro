@@ -1,0 +1,64 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/Hero.astro";
+import StatsBar from "@/components/StatsBar.astro";
+import CourseCard from "@/components/CourseCard.astro";
+import Testimonial from "@/components/Testimonial.astro";
+import ContactForm from "@/components/ContactForm.astro";
+import CTABanner from "@/components/CTABanner.astro";
+import { courses, testimonials, siteMeta } from "@/content/courses";
+---
+
+<BaseLayout title={siteMeta.title} description={siteMeta.description} canonicalPath="/">
+  <Hero />
+  <StatsBar />
+
+  <section class="container-wide py-14">
+    <p class="eyebrow">Featured Programmes</p>
+    <h2 class="display-title mt-4 text-4xl font-semibold text-white">Emergency Training Courses</h2>
+    <p class="mt-3 max-w-3xl text-slate-300">
+      Choose accredited first aid training, fire marshal training, and practical wildfire safety training designed for
+      workplaces, farms, and events in the Garden Route.
+    </p>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      {courses.slice(0, 3).map((course) => <CourseCard course={course} />)}
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-[#0A1420] py-14">
+    <div class="container-wide">
+      <p class="eyebrow">Why Firstcare Training</p>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <article class="card-glass p-6">
+          <h3 class="display-title text-2xl text-white">Field-Tested Instructors</h3>
+          <p class="mt-3 text-sm text-slate-300">
+            Decades of real emergency and wildfire experience bring practical context to every first aid and fire safety module.
+          </p>
+        </article>
+        <article class="card-glass p-6">
+          <h3 class="display-title text-2xl text-white">Accredited Programmes</h3>
+          <p class="mt-3 text-sm text-slate-300">
+            First aid and emergency courses aligned with South African workplace requirements and operational readiness.
+          </p>
+        </article>
+        <article class="card-glass p-6">
+          <h3 class="display-title text-2xl text-white">Flexible Delivery</h3>
+          <p class="mt-3 text-sm text-slate-300">
+            We deliver on-site and venue-based training across George, Knysna, Plettenberg Bay, and surrounding areas.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-wide py-14">
+    <p class="eyebrow">Client Feedback</p>
+    <h2 class="display-title mt-4 text-4xl font-semibold text-white">Trusted Across the Garden Route</h2>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      {testimonials.map((item) => <Testimonial quote={item.quote} author={item.author} />)}
+    </div>
+  </section>
+
+  <CTABanner />
+  <ContactForm />
+</BaseLayout>

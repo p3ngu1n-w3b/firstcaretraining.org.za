@@ -1,0 +1,13 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+}
+
+const { quote, author } = Astro.props;
+---
+
+<blockquote class="card-glass p-6">
+  <p class="text-slate-200">"{quote}"</p>
+  <footer class="mt-4 text-sm text-cyan-300">{author}</footer>
+</blockquote>

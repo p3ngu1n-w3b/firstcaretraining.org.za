@@ -1,0 +1,21 @@
+{
+  "name": "firstcaretraining.org.za",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@emailjs/browser": "^4.4.1",
+    "astro": "^5.12.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
+  }
+}

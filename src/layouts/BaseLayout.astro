@@ -1,0 +1,66 @@
+---
+import "../styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { contactDetails } from "@/content/courses";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+}
+
+const { title, description, canonicalPath = "/", ogImage = "/images/og-default.webp", jsonLd } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site).toString();
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Firstcare Training",
+  url: "https://firstcaretraining.org.za",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "George",
+    addressRegion: "Western Cape",
+    addressCountry: "ZA",
+  },
+  email: contactDetails.email,
+  telephone: contactDetails.phonePrimary,
+};
+const allSchema = Array.isArray(jsonLd) ? [orgSchema, ...jsonLd] : jsonLd ? [orgSchema, jsonLd] : [orgSchema];
+---
+
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Firstcare Training" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+    {
+      allSchema.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
