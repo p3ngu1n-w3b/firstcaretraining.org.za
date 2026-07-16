@@ -34,14 +34,14 @@ export const heroCopy = {
     "Accredited health and safety training for workplaces, farms, and communities across the Garden Route and Western Cape.",
   primaryCta: { label: "Explore Courses", href: "/courses" },
   secondaryCta: { label: "Book a Session", href: "#contact" },
-  trustLine: "50+ years combined field experience | George, Western Cape",
+  trustLine: "Since 2003 | 50+ years combined field experience | George, Western Cape",
 };
 
 export const stats = [
+  { value: "Since 2003", label: "Serving the Garden Route" },
   { value: "1000+", label: "Training sessions delivered" },
   { value: "6", label: "Accredited course programmes" },
   { value: "100%", label: "Practical, hands-on instruction" },
-  { value: "Garden Route", label: "On-site and venue-based delivery" },
 ];
 
 export const testimonials = [
