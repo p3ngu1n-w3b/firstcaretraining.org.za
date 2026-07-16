@@ -16,30 +16,30 @@ export type Course = {
 export const siteMeta = {
   title: "Firstcare Training | Accredited First Aid & Fire Safety Courses - Garden Route",
   description:
-    "Professional first aid, fire marshal, wildfire, and snake awareness training in George and the Garden Route. Accredited courses for workplaces, farms, and communities.",
+    "Professional first aid, fire marshal, SHE representative, wildfire, and snake awareness training in George and the Garden Route. Accredited courses for workplaces, farms, and communities.",
   canonical: "https://firstcaretraining.org.za/",
 };
 
 export const contactDetails = {
   phonePrimary: "079 190 9428",
   phoneSecondary: "084 314 4323",
-  email: "firstcarewildfire@gmail.com",
+  email: "cawmedics@gmail.com",
   location: "George, Western Cape",
 };
 
 export const heroCopy = {
-  eyebrow: "Garden Route | Accredited Emergency Training",
+  eyebrow: "Garden Route | Accredited Health & safety Training",
   heading: "Train with Confidence. Respond with Skill.",
   subheading:
-    "Accredited emergency and safety training for workplaces, farms, and communities across the Garden Route and Western Cape.",
+    "Accredited health and safety training for workplaces, farms, and communities across the Garden Route and Western Cape.",
   primaryCta: { label: "Explore Courses", href: "/courses" },
   secondaryCta: { label: "Book a Session", href: "#contact" },
   trustLine: "50+ years combined field experience | George, Western Cape",
 };
 
 export const stats = [
-  { value: "77+", label: "Training sessions delivered" },
-  { value: "5", label: "Accredited course programmes" },
+  { value: "1000+", label: "Training sessions delivered" },
+  { value: "6", label: "Accredited course programmes" },
   { value: "100%", label: "Practical, hands-on instruction" },
   { value: "Garden Route", label: "On-site and venue-based delivery" },
 ];
@@ -114,6 +114,32 @@ export const courses: Course[] = [
       "Supports workplace fire safety compliance and practical fire response preparedness.",
     image: "/images/course-fire-marshal.webp",
     alt: "Fire marshal instructor teaching extinguisher use in safety gear",
+  },
+  {
+    id: "she-representative",
+    slug: "she-representative",
+    title: "SHE Representative Course",
+    shortDescription:
+      "Safety, Health and Environment representative training covering OHS Act duties, workplace inspections, hazard identification, and committee participation for compliant teams.",
+    seoFocus: "SHE representative training George Western Cape",
+    duration: "1 to 2 days",
+    audience: "Appointed SHE representatives, supervisors, safety committee members, and workplace compliance leads",
+    outcomes: [
+      "Understand the legal framework and duties of a SHE representative under the OHS Act",
+      "Conduct workplace inspections and identify hazards with practical risk assessment methods",
+      "Participate effectively in SHE structures, incident reporting, and corrective action follow-up",
+    ],
+    topics: [
+      "OHS Act framework and SHE representative roles",
+      "Employer and employee duties and rights",
+      "Hazard identification and basic risk assessment",
+      "Workplace inspections and checklist reporting",
+      "Incident reporting, investigation basics, and SHE committee participation",
+    ],
+    accreditation:
+      "Supports statutory SHE representative readiness aligned to South African occupational health and safety requirements.",
+    image: "/images/course-she-rep.webp",
+    alt: "Instructor leading SHE representative workplace inspection and safety training",
   },
   {
     id: "wildfire",
@@ -198,6 +224,7 @@ export const courses: Course[] = [
 export const courseOptions = [
   { value: "Accredited First Aid", label: "Accredited First Aid" },
   { value: "Fire Marshal & Extinguisher Training", label: "Fire Marshal & Extinguisher Training" },
+  { value: "SHE Representative Course", label: "SHE Representative Course" },
   { value: "Basic Wildfire Training", label: "Basic Wildfire Training" },
   { value: "Snake Awareness Workshop", label: "Snake Awareness Workshop" },
   { value: "First Aid Workshop", label: "First Aid Workshop" },
