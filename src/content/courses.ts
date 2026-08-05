@@ -87,7 +87,7 @@ export const courses: Course[] = [
     accreditation:
       "Aligned to accredited first aid outcomes and workplace readiness requirements in South Africa.",
     image: "/images/course-first-aid.webp",
-    alt: "Instructor demonstrating CPR technique during first aid training session",
+    alt: "Trainee secured to a spinal backboard during first aid immobilization training",
   },
   {
     id: "fire-marshal",
@@ -113,7 +113,7 @@ export const courses: Course[] = [
     accreditation:
       "Supports workplace fire safety compliance and practical fire response preparedness.",
     image: "/images/course-fire-marshal.webp",
-    alt: "Fire marshal instructor teaching extinguisher use in safety gear",
+    alt: "Firefighters with Cape Town Fire and Rescue vehicles at a community outreach event",
   },
   {
     id: "she-representative",
@@ -139,7 +139,7 @@ export const courses: Course[] = [
     accreditation:
       "Supports statutory SHE representative readiness aligned to South African occupational health and safety requirements.",
     image: "/images/course-she-rep.webp",
-    alt: "Instructor leading SHE representative workplace inspection and safety training",
+    alt: "Trainee measuring blood pressure during a workplace health and safety training session",
   },
   {
     id: "wildfire",
@@ -165,7 +165,7 @@ export const courses: Course[] = [
     accreditation:
       "Practical wildfire preparedness training informed by decades of field experience in the Garden Route.",
     image: "/images/course-wildfire.webp",
-    alt: "Wildfire preparedness briefing in outdoor field environment",
+    alt: "Wildland firefighters conducting mop-up operations on burned ground",
   },
   {
     id: "snake-awareness",
@@ -216,8 +216,8 @@ export const courses: Course[] = [
     ],
     accreditation:
       "Workshop format can be tailored as accredited or awareness-focused depending on audience needs.",
-    image: "/images/course-first-aid.webp",
-    alt: "Group participating in practical first aid workshop activity",
+    image: "/images/course-workshops.webp",
+    alt: "Instructor demonstrating infant choking rescue with back slaps on a training manikin",
   },
 ];
 
