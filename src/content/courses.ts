@@ -139,7 +139,7 @@ export const courses: Course[] = [
     accreditation:
       "Supports statutory SHE representative readiness aligned to South African occupational health and safety requirements.",
     image: "/images/course-she-rep.webp",
-    alt: "Trainee measuring blood pressure during a workplace health and safety training session",
+    alt: "Work safety mind map highlighting workplace hazards, regulations, and risk concepts",
   },
   {
     id: "wildfire",
